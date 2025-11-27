@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null)
+    localStorage.removeItem('lm_loans')
     localStorage.removeItem('logged_in_user')
   }
 

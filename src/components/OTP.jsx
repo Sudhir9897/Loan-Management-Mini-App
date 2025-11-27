@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
+import { initializeLoanData } from '../utils/storage'
 
 export default function OTP(){
   const [otp, setOtp] = useState('')
@@ -26,6 +27,7 @@ export default function OTP(){
       login(temp)
       localStorage.removeItem('lm_temp_login')
       toast.success('OTP verified — logged in')
+      initializeLoanData()
       navigate('/dashboard')
     } else {
       toast.error('Invalid OTP')

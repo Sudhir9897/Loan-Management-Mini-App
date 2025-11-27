@@ -5,6 +5,11 @@ export function initializeData(){
   if(!localStorage.getItem('lm_users')){
     localStorage.setItem('lm_users', JSON.stringify(usersData))
   }
+//   if(!localStorage.getItem('lm_loans')){
+//     localStorage.setItem('lm_loans', JSON.stringify(loansData))
+//   }
+}
+export function initializeLoanData(){
   if(!localStorage.getItem('lm_loans')){
     localStorage.setItem('lm_loans', JSON.stringify(loansData))
   }

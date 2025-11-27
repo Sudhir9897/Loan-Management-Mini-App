@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 export default function Login(){
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
@@ -16,7 +17,6 @@ export default function Login(){
       toast.error('Invalid email or password')
       return
     }
-    // store temp login for OTP validation
     localStorage.setItem('lm_temp_login', JSON.stringify(found))
     toast.success('Login successful. Enter OTP.')
     navigate('/otp')
@@ -25,12 +25,53 @@ export default function Login(){
   return (
     <div className="form">
       <h3>Login</h3>
-      <input className="input" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} />
-      <input className="input" placeholder="Password" value={password} onChange={e=>setPassword(e.target.value)} type="password" />
-      <div style={{display:'flex', justifyContent:'space-between', marginTop:8}}>
-        <button className="btn" onClick={handleSubmit}>Sign In</button>
-        <button className="btn" style={{background:'#38a169'}} onClick={()=>{ navigate('/signup') }}>Signup</button>
-      </div>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          className="input"
+          placeholder="Email"
+          value={email}
+          onChange={e=>setEmail(e.target.value)}
+        />
+
+        <div style={{ position: "relative", width: "100%" }}>
+          <input
+            className="input"
+            placeholder="Password"
+            value={password}
+            type={showPassword ? "text" : "password"}
+            onChange={e=>setPassword(e.target.value)}
+          />
+
+          {/* 👁 Normal Eye Icon */}
+          <span
+            onClick={() => setShowPassword(!showPassword)}
+            style={{
+              position: "absolute",
+              right: 10,
+              top: "50%",
+              transform: "translateY(-50%)",
+              cursor: "pointer",
+              fontSize: 16,
+              color: "#555"
+            }}
+          >
+            {showPassword ? "👁" : "👁‍🗨"}
+          </span>
+        </div>
+
+        <div style={{display:'flex', justifyContent:'space-between', marginTop:8}}>
+          <button className="btn" type="submit">Sign In</button>
+          <button
+            className="btn"
+            style={{background:'#38a169'}}
+            type="button"
+            onClick={() => navigate('/signup')}
+          >
+            Signup
+          </button>
+        </div>
+      </form>
     </div>
   )
 }
