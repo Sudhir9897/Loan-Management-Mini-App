@@ -38,21 +38,16 @@ npm start
 4️⃣ Access the app
 http://localhost:3000
 
-🖼️ Screenshots
-
-Add screenshots inside /screenshots folder and update links below
-
 Page	Screenshot
-Login	
+Login	 ![alt text](image.png)
 
-OTP	
+OTP	![alt text](image-1.png)
 
-Signup	
+Signup	![alt text](image-3.png)
 
-Dashboard	
+Dashboard	![alt text](image-2.png)
 🎯 Bonus Features Added
 
-✔ OTP Resend Timer
 ✔ Form Validations (Login / Signup / OTP)
 ✔ Auto-redirect:
 
